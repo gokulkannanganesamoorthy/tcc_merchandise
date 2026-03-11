@@ -1,9 +1,29 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
+import { useCartStore } from '../../utils/cartStore';
+import { toast } from 'sonner';
 
 const ProductShowcase = () => {
   const [selectedSize, setSelectedSize] = useState('M');
   const sizes = ['S', 'M', 'L', 'XL'];
+  const [isAdding, setIsAdding] = useState(false);
+  const addToCart = useCartStore(state => state.addToCart);
+
+  const handleAddToCart = () => {
+    setIsAdding(true);
+    
+    // Simulate slight network delay for premium feel
+    setTimeout(() => {
+      addToCart({
+        id: 'tcc-signature-tee',
+        name: 'The Signature T-Shirt',
+        price: 55.00,
+        size: selectedSize,
+        image: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&q=80&w=400'
+      });
+      setIsAdding(false);
+      toast(`Added Size ${selectedSize} to Cart`);
+    }, 400);
+  };
 
   return (
     <section className="bg-brand-white py-20 lg:py-32">
@@ -68,20 +88,40 @@ const ProductShowcase = () => {
                     <button
                       key={size}
                       onClick={() => setSelectedSize(size)}
-                      className={`py-3 text-sm font-medium transition-all duration-300 border ${
+                      className={`py-3 text-sm font-medium transition-all duration-300 border relative overflow-hidden group ${
                         selectedSize === size 
-                          ? 'border-brand-black bg-brand-black text-brand-white' 
-                          : 'border-brand-gray bg-transparent text-brand-black hover:border-brand-black/30'
+                          ? 'border-brand-black text-brand-white' 
+                          : 'border-brand-gray bg-brand-white text-brand-black hover:border-brand-black/50'
                       }`}
                     >
-                      {size}
+                      {/* Animated background for selected state */}
+                      {selectedSize === size && (
+                        <motion.div 
+                          layoutId="size-indicator"
+                          className="absolute inset-0 bg-brand-black z-0"
+                          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                        />
+                      )}
+                      
+                      {/* Hover effect for unselected */}
+                      {selectedSize !== size && (
+                        <div className="absolute inset-0 bg-brand-gray scale-y-0 group-hover:scale-y-100 origin-bottom transition-transform duration-300 ease-in-out z-0" />
+                      )}
+
+                      <span className="relative z-10">{size}</span>
                     </button>
                   ))}
                 </div>
               </div>
 
-              <button className="w-full bg-brand-black text-brand-white py-5 uppercase tracking-widest text-sm font-medium hover:bg-brand-darkGray transition-colors duration-300">
-                Add to Cart
+              <button 
+                onClick={handleAddToCart}
+                disabled={isAdding}
+                className="w-full bg-brand-black text-brand-white py-5 uppercase tracking-widest text-sm font-medium hover:bg-brand-darkGray transition-colors duration-300 relative overflow-hidden group disabled:opacity-70 disabled:cursor-not-allowed"
+              >
+                <span className="relative z-10">{isAdding ? 'Adding...' : 'Add to Cart — $55'}</span>
+                {/* Micro-interaction beam sweep */}
+                <div className="absolute top-0 -left-[100%] w-1/2 h-full bg-gradient-to-r from-transparent via-brand-white/10 to-transparent skew-x-[45deg] group-hover:left-[200%] transition-all duration-1000 ease-in-out z-0" />
               </button>
 
               <div className="mt-8 pt-8 border-t border-brand-gray text-sm text-brand-darkGray/60 flex flex-col gap-2">
