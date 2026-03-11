@@ -1,12 +1,26 @@
 import { useEffect } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Outlet } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Lenis from 'lenis';
 import { Toaster } from 'sonner';
 import Home from './pages/Home';
+import Admin from './pages/Admin';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import CartSlideOver from './components/layout/CartSlideOver';
+
+// Layout for the public store incorporating Navbar, Footer, and Cart
+const StoreLayout = () => {
+  return (
+    <div className="flex flex-col min-h-screen">
+      <Navbar />
+      <main className="flex-grow">
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
+  );
+};
 
 function App() {
   useEffect(() => {
@@ -37,6 +51,7 @@ function App() {
   return (
     <HelmetProvider>
       <BrowserRouter>
+        {/* Global Components */}
         <Toaster position="bottom-center" toastOptions={{
           style: {
             background: '#0a0a0a',
@@ -50,15 +65,17 @@ function App() {
           }
         }} />
         <CartSlideOver />
-        <div className="flex flex-col min-h-screen">
-          <Navbar />
-          <main className="flex-grow">
-            <Routes>
-              <Route path="/" element={<Home />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
+
+        {/* Routes */}
+        <Routes>
+          {/* Public Storefront Routes */}
+          <Route element={<StoreLayout />}>
+            <Route path="/" element={<Home />} />
+          </Route>
+          
+          {/* Admin Routes (No Navbar/Footer) */}
+          <Route path="/admin" element={<Admin />} />
+        </Routes>
       </BrowserRouter>
     </HelmetProvider>
   );

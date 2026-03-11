@@ -18,7 +18,7 @@ const ProductShowcase = () => {
       addToCart({
         id: 'tcc-signature-tee',
         name: 'The Signature T-Shirt',
-        price: 55.00,
+        price: 700.00,
         size: selectedSize,
         image: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&q=80&w=400'
       });
@@ -28,7 +28,7 @@ const ProductShowcase = () => {
   };
 
   return (
-    <section className="bg-brand-white py-20 lg:py-32">
+    <section id="product-section" className="bg-brand-white py-20 lg:py-32">
       <div className="container mx-auto px-6">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
           
@@ -66,7 +66,7 @@ const ProductShowcase = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
             >
               <h2 className="text-3xl lg:text-5xl font-display uppercase tracking-tight mb-4">The Signature <br/> T-Shirt</h2>
-              <p className="text-xl text-brand-darkGray mb-8">$55.00</p>
+              <p className="text-xl text-brand-darkGray mb-8">₹700</p>
               
               <div className="prose prose-lg text-brand-darkGray/80 font-sans mb-12">
                 <p>
@@ -121,13 +121,13 @@ const ProductShowcase = () => {
                 disabled={isAdding}
                 className="w-full bg-brand-black text-brand-white py-5 uppercase tracking-widest text-sm font-medium hover:bg-brand-darkGray transition-colors duration-300 relative overflow-hidden group disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                <span className="relative z-10">{isAdding ? 'Adding...' : 'Add to Cart — $55'}</span>
+                <span className="relative z-10">{isAdding ? 'Adding...' : 'Add to Cart — ₹700'}</span>
                 {/* Micro-interaction beam sweep */}
                 <div className="absolute top-0 -left-[100%] w-1/2 h-full bg-gradient-to-r from-transparent via-brand-white/10 to-transparent skew-x-[45deg] group-hover:left-[200%] transition-all duration-1000 ease-in-out z-0" />
               </button>
 
               <div className="mt-8 pt-8 border-t border-brand-gray text-sm text-brand-darkGray/60 flex flex-col gap-2">
-                <p>✓ Free shipping on orders over $100</p>
+                <p>✓ Free shipping on orders over ₹1000</p>
                 <p>✓ Free returns within 30 days</p>
               </div>
             </motion.div>

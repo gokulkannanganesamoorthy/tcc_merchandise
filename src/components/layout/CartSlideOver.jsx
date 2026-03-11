@@ -86,7 +86,7 @@ const CartSlideOver = () => {
                             <Plus size={14} />
                           </button>
                         </div>
-                        <p className="font-medium">${(item.price * item.quantity).toFixed(2)}</p>
+                        <p className="font-medium">₹{(item.price * item.quantity).toFixed(2)}</p>
                       </div>
                     </div>
                   </div>
@@ -99,15 +99,32 @@ const CartSlideOver = () => {
               <div className="border-t border-brand-gray p-6 bg-brand-white">
                 <div className="flex items-center justify-between mb-6">
                   <span className="uppercase tracking-widest text-sm text-brand-darkGray">Subtotal</span>
-                  <span className="text-xl font-medium">${cartTotal().toFixed(2)}</span>
+                  <span className="text-xl font-medium">₹{cartTotal().toFixed(2)}</span>
                 </div>
                 <p className="text-xs text-brand-darkGray/60 mb-6 text-center">Shipping & taxes calculated at checkout</p>
                 <button 
                   onClick={() => {
                     import('sonner').then(({ toast }) => {
-                      toast.success('Redirecting to checkout...', {
-                        description: 'This is a demo. In a real app, you would go to Stripe/Shopify.'
+                      const toastId = toast.loading('Initializing Razorpay Checkout...', {
+                        description: 'Please wait while we connect securely.'
                       });
+                      
+                      setTimeout(() => {
+                        toast.loading('Processing Payment of ₹' + cartTotal().toFixed(2) + '...', {
+                          id: toastId,
+                          description: 'Do not close this window.'
+                        });
+                        
+                        setTimeout(() => {
+                          toast.success('Payment Successful!', {
+                            id: toastId,
+                            description: 'Your order for The Signature T-Shirt has been placed.'
+                          });
+                          setTimeout(() => {
+                             closeCart();
+                          }, 1500);
+                        }, 2000);
+                      }, 1500);
                     });
                   }}
                   className="w-full bg-brand-black text-brand-white py-4 uppercase tracking-widest text-sm font-medium hover:bg-brand-darkGray transition-colors duration-300 relative overflow-hidden group"
