@@ -29,7 +29,7 @@ const Hero = () => {
         >
           The Difference is in the Details
         </motion.p>
-        
+
         <motion.h1
           className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-9xl text-brand-white uppercase tracking-tight leading-none mb-10"
           initial={{ y: 40, opacity: 0 }}
@@ -42,22 +42,6 @@ const Hero = () => {
         >
           The <br className="md:hidden" /> Signature
         </motion.h1>
-
-        <motion.button
-          onClick={() => {
-            window.scrollTo({
-              top: window.innerHeight,
-              behavior: 'smooth'
-            });
-          }}
-          className="bg-brand-white text-brand-black px-10 py-4 uppercase tracking-widest text-sm font-medium hover:bg-brand-gray transition-colors duration-300 relative overflow-hidden group"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-        >
-          <span className="relative z-10 group-hover:text-brand-white transition-colors duration-300">Shop Now</span>
-          <div className="absolute inset-0 bg-brand-black translate-y-[100%] group-hover:translate-y-0 transition-transform duration-300 ease-in-out z-0" />
-        </motion.button>
       </div>
 
       {/* Scroll Indicator (Adjusted position) */}
