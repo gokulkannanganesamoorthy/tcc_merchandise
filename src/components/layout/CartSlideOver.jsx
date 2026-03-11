@@ -102,7 +102,16 @@ const CartSlideOver = () => {
                   <span className="text-xl font-medium">${cartTotal().toFixed(2)}</span>
                 </div>
                 <p className="text-xs text-brand-darkGray/60 mb-6 text-center">Shipping & taxes calculated at checkout</p>
-                <button className="w-full bg-brand-black text-brand-white py-4 uppercase tracking-widest text-sm font-medium hover:bg-brand-darkGray transition-colors duration-300 relative overflow-hidden group">
+                <button 
+                  onClick={() => {
+                    import('sonner').then(({ toast }) => {
+                      toast.success('Redirecting to checkout...', {
+                        description: 'This is a demo. In a real app, you would go to Stripe/Shopify.'
+                      });
+                    });
+                  }}
+                  className="w-full bg-brand-black text-brand-white py-4 uppercase tracking-widest text-sm font-medium hover:bg-brand-darkGray transition-colors duration-300 relative overflow-hidden group"
+                >
                   <span className="relative z-10">Proceed to Checkout</span>
                   <div className="absolute inset-0 bg-brand-gray translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out" />
                   <span className="absolute inset-0 z-20 flex items-center justify-center translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out text-brand-black">Proceed to Checkout</span>
