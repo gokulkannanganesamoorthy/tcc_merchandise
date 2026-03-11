@@ -1,4 +1,6 @@
 import { useState } from 'react';
+// eslint-disable-next-line no-unused-vars
+import { motion } from 'framer-motion';
 import { useCartStore } from '../../utils/cartStore';
 import { toast } from 'sonner';
 

@@ -1,5 +1,11 @@
 import { useState, useEffect } from 'react';
-import { useScroll, useTransform, AnimatePresence } from 'framer-motion';
+import {
+  // eslint-disable-next-line no-unused-vars
+  motion,
+  useScroll,
+  useTransform,
+  AnimatePresence,
+} from 'framer-motion';
 import { ShoppingBag, Menu, X } from 'lucide-react';
 import { useCartStore } from '../../utils/cartStore';
 
@@ -17,13 +23,13 @@ const Navbar = () => {
   const backgroundColor = useTransform(
     scrollY,
     [0, 100],
-    ['rgba(252, 252, 252, 0)', 'rgba(252, 252, 252, 0.95)']
+    ['rgba(252, 252, 252, 0)', 'rgba(252, 252, 252, 0.95)'],
   );
 
   const textColor = useTransform(
     scrollY,
     [0, 100],
-    ['rgb(252, 252, 252)', 'rgb(10, 10, 10)']
+    ['rgb(252, 252, 252)', 'rgb(10, 10, 10)'],
   );
 
   return (
@@ -38,18 +44,22 @@ const Navbar = () => {
       >
         <div className="container mx-auto px-6 h-20 flex items-center justify-between">
           <div className="flex items-center gap-6">
-            <button 
+            <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
               className="p-2 -ml-2 hover:opacity-70 transition-opacity z-50 relative"
             >
-              {isMenuOpen ? <X strokeWidth={1.5} /> : <Menu strokeWidth={1.5} />}
+              {isMenuOpen ? (
+                <X strokeWidth={1.5} />
+              ) : (
+                <Menu strokeWidth={1.5} />
+              )}
             </button>
           </div>
 
-          <motion.div 
+          <motion.div
             className="text-xl font-display font-medium tracking-widest absolute left-1/2 -translate-x-1/2 z-50 pointer-events-none"
             whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 400, damping: 10 }}
+            transition={{ type: 'spring', stiffness: 400, damping: 10 }}
           >
             TCC
           </motion.div>
@@ -58,13 +68,13 @@ const Navbar = () => {
             <button className="font-sans text-sm tracking-wider uppercase hidden md:block hover:opacity-70 transition-opacity">
               Account
             </button>
-            <button 
-              onClick={useCartStore(state => state.openCart)}
+            <button
+              onClick={useCartStore((state) => state.openCart)}
               className="p-2 -mr-2 relative hover:opacity-70 transition-opacity"
             >
               <ShoppingBag strokeWidth={1.5} />
               <span className="absolute top-1 right-0 bg-brand-black text-brand-white text-[10px] w-4 h-4 flex items-center justify-center rounded-full pointer-events-none">
-                {useCartStore(state => state.cartCount())}
+                {useCartStore((state) => state.cartCount())}
               </span>
             </button>
           </div>
@@ -73,7 +83,7 @@ const Navbar = () => {
 
       <AnimatePresence>
         {isMenuOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, y: '-100%' }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: '-100%' }}
@@ -81,19 +91,21 @@ const Navbar = () => {
             className="fixed inset-0 z-40 bg-brand-white flex items-center justify-center pt-20"
           >
             <nav className="flex flex-col items-center gap-8">
-              {['Shop', 'Collections', 'About Us', 'Journal', 'Contact'].map((item, index) => (
-                <motion.a
-                  key={item}
-                  href="#"
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 + (index * 0.1), duration: 0.5 }}
-                  className="text-4xl md:text-6xl font-display tracking-tight hover:text-brand-darkGray/50 transition-colors uppercase text-brand-black"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {item}
-                </motion.a>
-              ))}
+              {['Shop', 'Collections', 'About Us', 'Journal', 'Contact'].map(
+                (item, index) => (
+                  <motion.a
+                    key={item}
+                    href="#"
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.2 + index * 0.1, duration: 0.5 }}
+                    className="text-4xl md:text-6xl font-display tracking-tight hover:text-brand-darkGray/50 transition-colors uppercase text-brand-black"
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {item}
+                  </motion.a>
+                ),
+              )}
             </nav>
           </motion.div>
         )}
