@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 
 const Hero = () => {
   return (
-    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-brand-black">
+    <section id="home" className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-brand-black">
       {/* Background Image/Video Placeholder */}
       <motion.div
         className="absolute inset-0 z-0"

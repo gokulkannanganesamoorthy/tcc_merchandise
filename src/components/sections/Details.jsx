@@ -40,7 +40,7 @@ const DetailRow = ({ title, description, image, isReversed }) => {
 
 const Details = () => {
   return (
-    <section className="bg-brand-white py-20 lg:py-32 overflow-hidden">
+    <section id="details" className="bg-brand-white py-20 lg:py-32 overflow-hidden">
       <div className="container mx-auto px-6">
         <div className="text-center mb-24">
           <motion.h2 

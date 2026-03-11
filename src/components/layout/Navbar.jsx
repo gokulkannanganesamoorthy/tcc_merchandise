@@ -65,9 +65,9 @@ const Navbar = () => {
           </motion.div>
 
           <div className="flex items-center gap-6 z-50">
-            <button className="font-sans text-sm tracking-wider uppercase hidden md:block hover:opacity-70 transition-opacity">
+            <a href="/admin" className="font-sans text-sm tracking-wider uppercase hidden md:block hover:opacity-70 transition-opacity">
               Account
-            </button>
+            </a>
             <button
               onClick={useCartStore((state) => state.openCart)}
               className="p-2 -mr-2 relative hover:opacity-70 transition-opacity"
@@ -91,21 +91,25 @@ const Navbar = () => {
             className="fixed inset-0 z-40 bg-brand-white flex items-center justify-center pt-20"
           >
             <nav className="flex flex-col items-center gap-8">
-              {['Shop', 'Collections', 'About Us', 'Journal', 'Contact'].map(
-                (item, index) => (
-                  <motion.a
-                    key={item}
-                    href="#"
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 + index * 0.1, duration: 0.5 }}
-                    className="text-4xl md:text-6xl font-display tracking-tight hover:text-brand-darkGray/50 transition-colors uppercase text-brand-black"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item}
-                  </motion.a>
-                ),
-              )}
+              {[
+                { name: 'Shop', href: '#product-section' },
+                { name: 'Collections', href: '#product-section' },
+                { name: 'About Us', href: '#details' },
+                { name: 'Journal', href: '#details' },
+                { name: 'Contact', href: '#footer' },
+              ].map((item, index) => (
+                <motion.a
+                  key={item.name}
+                  href={item.href}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 + index * 0.1, duration: 0.5 }}
+                  className="text-4xl md:text-6xl font-display tracking-tight hover:text-brand-darkGray/50 transition-colors uppercase text-brand-black"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  {item.name}
+                </motion.a>
+              ))}
             </nav>
           </motion.div>
         )}

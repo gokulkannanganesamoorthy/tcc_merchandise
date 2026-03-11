@@ -1,6 +1,6 @@
 const Footer = () => {
   return (
-    <footer className="bg-brand-black text-brand-white py-20">
+    <footer id="footer" className="bg-brand-black text-brand-white py-20">
       <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
         <div className="col-span-1 md:col-span-2">
           <h2 className="font-display text-2xl mb-6">TCC MERCHANDISE</h2>
@@ -22,19 +22,19 @@ const Footer = () => {
         <div>
           <h3 className="uppercase tracking-widest text-xs text-brand-gray/50 mb-6">Shop</h3>
           <ul className="space-y-4">
-            <li><a href="#" className="hover:text-brand-gray/70 transition-colors">The Signature T-Shirt</a></li>
-            <li><a href="#" className="hover:text-brand-gray/70 transition-colors">Gift Cards</a></li>
-            <li><a href="#" className="hover:text-brand-gray/70 transition-colors">Size Guide</a></li>
+            <li><a href="#product-section" className="hover:text-brand-gray/70 transition-colors">The Signature T-Shirt</a></li>
+            <li><a href="#product-section" className="hover:text-brand-gray/70 transition-colors">Gift Cards</a></li>
+            <li><a href="#product-section" className="hover:text-brand-gray/70 transition-colors">Size Guide</a></li>
           </ul>
         </div>
 
         <div>
           <h3 className="uppercase tracking-widest text-xs text-brand-gray/50 mb-6">Support</h3>
           <ul className="space-y-4">
-            <li><a href="#" className="hover:text-brand-gray/70 transition-colors">FAQ</a></li>
-            <li><a href="#" className="hover:text-brand-gray/70 transition-colors">Shipping</a></li>
-            <li><a href="#" className="hover:text-brand-gray/70 transition-colors">Returns</a></li>
-            <li><a href="#" className="hover:text-brand-gray/70 transition-colors">Contact</a></li>
+            <li><a href="#details" className="hover:text-brand-gray/70 transition-colors">FAQ</a></li>
+            <li><a href="#footer" className="hover:text-brand-gray/70 transition-colors">Shipping</a></li>
+            <li><a href="#footer" className="hover:text-brand-gray/70 transition-colors">Returns</a></li>
+            <li><a href="#footer" className="hover:text-brand-gray/70 transition-colors">Contact</a></li>
           </ul>
         </div>
       </div>
@@ -42,8 +42,8 @@ const Footer = () => {
       <div className="container mx-auto px-6 mt-20 pt-8 border-t border-brand-white/10 flex flex-col md:flex-row items-center justify-between text-xs text-brand-gray/50">
         <p>&copy; {new Date().getFullYear()} TCC MERCHANDISE. All rights reserved.</p>
         <div className="flex gap-6 mt-4 md:mt-0">
-          <a href="#" className="hover:text-brand-white transition-colors">Privacy</a>
-          <a href="#" className="hover:text-brand-white transition-colors">Terms</a>
+          <a href="#footer" className="hover:text-brand-white transition-colors">Privacy</a>
+          <a href="#footer" className="hover:text-brand-white transition-colors">Terms</a>
         </div>
       </div>
     </footer>
