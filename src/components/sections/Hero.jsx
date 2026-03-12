@@ -12,8 +12,8 @@ const Hero = () => {
         transition={{ duration: 1.5, ease: 'easeOut' }}
       >
         <img
-          src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?q=80&w=2600&auto=format&fit=crop"
-          alt="Premium T-Shirt"
+          src="/images/hero.png"
+          alt="TCC Merchandise Hero"
           className="w-full h-full object-cover object-center"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-transparent to-brand-black/30" />

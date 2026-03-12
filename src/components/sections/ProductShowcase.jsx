@@ -22,7 +22,7 @@ const ProductShowcase = () => {
         name: 'The Signature T-Shirt',
         price: 700.00,
         size: selectedSize,
-        image: 'https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&q=80&w=400'
+        image: '/images/front.png'
       });
       setIsAdding(false);
       toast(`Added Size ${selectedSize} to Cart`);
@@ -45,17 +45,17 @@ const ProductShowcase = () => {
                 transition={{ duration: 0.8 }}
               >
                 <img 
-                  src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?auto=format&fit=crop&q=80&w=1600" 
-                  alt="Signature T-Shirt Front" 
+                  src="/images/front.png" 
+                  alt="The Signature T-Shirt — Front" 
                   className="w-full h-full object-cover"
                 />
               </motion.div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="aspect-square bg-brand-gray overflow-hidden">
-                  <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&q=80&w=800" alt="Detail 1" className="w-full h-full object-cover" />
+                  <img src="/images/front.png" alt="Signature T-Shirt Detail" className="w-full h-full object-cover" />
                 </div>
                 <div className="aspect-square bg-brand-gray overflow-hidden">
-                  <img src="https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?auto=format&fit=crop&q=80&w=800" alt="Detail 2" className="w-full h-full object-cover" />
+                  <img src="/images/back.png" alt="Signature T-Shirt — Back" className="w-full h-full object-cover" />
                 </div>
               </div>
             </div>

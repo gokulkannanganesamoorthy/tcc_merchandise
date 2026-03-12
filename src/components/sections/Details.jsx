@@ -57,21 +57,21 @@ const Details = () => {
         <DetailRow 
           title="Twice as Strong"
           description="We use long-staple cotton, spun tight to create a yarn that resists pilling and stays incredibly soft wash after wash. The fabric weight is optimized for a drape that flatters while remaining breathable."
-          image="https://images.unsplash.com/photo-1620799140408-edc6dcb6d633?auto=format&fit=crop&q=80&w=1600"
+          image="/images/front.png"
           isReversed={false}
         />
 
         <DetailRow 
           title="The Perfect Fit"
           description="Developed through analyzing thousands of body measurements. The armholes are raised, the shoulders naturally sloped, and the length perfected to sit just right, tucked or untucked."
-          image="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?auto=format&fit=crop&q=80&w=1600"
+          image="/images/back.png"
           isReversed={true}
         />
 
          <DetailRow 
           title="Micro Details"
           description="From the reinforced neckband that never bacon-curls, to the hidden seams that eliminate chafing. Every millimeter has been considered."
-          image="https://images.unsplash.com/photo-1618354691438-25bc04584c23?auto=format&fit=crop&q=80&w=1600"
+          image="/images/front.png"
           isReversed={false}
         />
       </div>
