@@ -9,6 +9,8 @@ const ProductShowcase = () => {
   const [selectedSize, setSelectedSize] = useState('M');
   const sizes = ['S', 'M', 'L', 'XL'];
   const [isAdding, setIsAdding] = useState(false);
+  const [activeImage, setActiveImage] = useState('/images/front.png');
+  const [thumbIndex, setThumbIndex] = useState(0);
   const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
   const addToCart = useCartStore(state => state.addToCart);
 
@@ -35,29 +37,49 @@ const ProductShowcase = () => {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-24 items-start">
             
-            {/* Left Column: Image Gallery (Sticky on Desktop) */}
-            <div className="lg:sticky lg:top-32 space-y-4">
-              <motion.div 
-                className="aspect-[4/5] bg-brand-gray overflow-hidden relative"
+            {/* Left Column: Image Gallery — Amazon/Flipkart style */}
+            <div className="lg:sticky lg:top-32">
+              <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
                 transition={{ duration: 0.8 }}
+                className="flex flex-col sm:flex-row gap-3"
               >
-                <img 
-                  src="/images/front.png" 
-                  alt="The Signature T-Shirt — Front" 
-                  className="w-full h-full object-cover"
-                />
+                {/* Thumbnail Strip */}
+                <div className="flex sm:flex-col gap-2 order-2 sm:order-1">
+                  {[
+                    { src: '/images/front.png', label: 'Front' },
+                    { src: '/images/back.png', label: 'Back' },
+                    { src: '/images/front.png', label: 'Detail' },
+                  ].map((thumb, i) => (
+                    <button
+                      key={i}
+                      className={`w-16 h-16 sm:w-20 sm:h-20 flex-shrink-0 overflow-hidden border-2 transition-all duration-200 ${
+                        thumbIndex === i
+                          ? 'border-brand-black' : 'border-transparent hover:border-brand-darkGray/40'
+                      }`}
+                      onMouseEnter={() => { setActiveImage(thumb.src); setThumbIndex(i); }}
+                      onClick={() => { setActiveImage(thumb.src); setThumbIndex(i); }}
+                    >
+                      <img src={thumb.src} alt={thumb.label} className="w-full h-full object-contain bg-[#f5f5f5]" />
+                    </button>
+                  ))}
+                </div>
+
+                {/* Main Image */}
+                <div className="relative flex-1 order-1 sm:order-2 aspect-square bg-[#f5f5f5] overflow-hidden">
+                  <motion.img
+                    key={activeImage}
+                    src={activeImage}
+                    alt="The Signature T-Shirt"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.25 }}
+                    className="w-full h-full object-contain p-4"
+                  />
+                </div>
               </motion.div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="aspect-square bg-brand-gray overflow-hidden">
-                  <img src="/images/front.png" alt="Signature T-Shirt Detail" className="w-full h-full object-cover" />
-                </div>
-                <div className="aspect-square bg-brand-gray overflow-hidden">
-                  <img src="/images/back.png" alt="Signature T-Shirt — Back" className="w-full h-full object-cover" />
-                </div>
-              </div>
             </div>
 
             {/* Right Column: Product Details */}

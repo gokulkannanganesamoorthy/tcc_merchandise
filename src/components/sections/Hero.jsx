@@ -3,7 +3,10 @@ import { motion } from 'framer-motion';
 
 const Hero = () => {
   return (
-    <section id="home" className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-brand-black">
+    <section
+      id="home"
+      className="relative h-screen w-full flex items-center justify-center overflow-hidden bg-brand-black"
+    >
       {/* Background Image/Video Placeholder */}
       <motion.div
         className="absolute inset-0 z-0"
@@ -16,7 +19,6 @@ const Hero = () => {
           alt="TCC Merchandise Hero"
           className="w-full h-full object-cover object-center"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-black/80 via-transparent to-brand-black/30" />
       </motion.div>
 
       {/* Content */}
