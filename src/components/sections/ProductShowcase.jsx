@@ -104,23 +104,23 @@ const ProductShowcase = () => {
               >
                 {/* Title + Price row */}
                 <div className="flex items-start justify-between mb-3">
-                  <h2 className="text-lg sm:text-xl lg:text-2xl font-display uppercase tracking-widest leading-tight pr-4">
+                  <h2 className="text-lg sm:text-xl lg:text-3xl font-display uppercase tracking-widest leading-tight pr-4">
                     THE SIGNATURE T-SHIRT
                   </h2>
-                  <span className="text-base sm:text-lg font-sans font-medium text-brand-darkGray flex-shrink-0">
+                  <span className="text-base sm:text-lg lg:text-2xl font-sans font-medium text-brand-darkGray flex-shrink-0">
                     ₹700
                   </span>
                 </div>
 
                 {/* Short description */}
-                <p className="text-sm text-brand-darkGray/70 leading-relaxed mb-6">
+                <p className="text-sm lg:text-base text-brand-darkGray/70 leading-relaxed mb-6">
                   A favourite since day one. Crafted from 100% Supima cotton for a luxuriously soft look and feel. Pre-shrunk, garment-dyed, and tailored for a perfect drape.
                 </p>
 
                 {/* Size selector */}
                 <div className="mb-6">
                   <div className="flex items-center justify-between mb-3">
-                    <span className="text-xs uppercase tracking-widest font-medium">Size</span>
+                    <span className="text-xs lg:text-sm uppercase tracking-widest font-medium">Size</span>
                     <button
                       onClick={() => setIsSizeGuideOpen(true)}
                       className="text-xs underline text-brand-darkGray/50 hover:text-brand-black transition-colors"
@@ -133,7 +133,7 @@ const ProductShowcase = () => {
                       <button
                         key={size}
                         onClick={() => setSelectedSize(size)}
-                        className={`py-3 text-sm font-medium border transition-all duration-200 relative overflow-hidden group ${
+                        className={`py-3 lg:py-4 text-sm lg:text-base font-medium border transition-all duration-200 relative overflow-hidden group ${
                           selectedSize === size
                             ? 'border-brand-black bg-brand-black text-brand-white'
                             : 'border-brand-gray bg-brand-white text-brand-black hover:border-brand-black/50'
@@ -159,8 +159,8 @@ const ProductShowcase = () => {
 
                 {/* Feature list */}
                 <div className="text-sm text-brand-darkGray/80 space-y-2 mb-6">
-                  <p className="font-medium uppercase tracking-wider text-xs text-brand-darkGray mb-3">Material</p>
-                  <ul className="space-y-1.5 text-xs leading-relaxed">
+                  <p className="font-medium uppercase tracking-wider text-xs lg:text-sm text-brand-darkGray mb-3">Material</p>
+                  <ul className="space-y-1.5 text-xs lg:text-sm leading-relaxed">
                     <li>— 100% Supima Cotton</li>
                     <li>— Heavyweight 220 GSM</li>
                     <li>— Blind-stitched hems</li>
